@@ -10,7 +10,7 @@ import './app.css';
 function App() {
     const data = [
         {name: 'John Smith',salary: 1100, increase: false, id: 1},
-        {name: 'Sergey Chudinov',salary: 1500, increase: true, id: 2},
+        {name: 'Sergey Chudinov',salary: 1500, increase: false, id: 2},
         {name: 'Al Pachino',salary: 700, increase: false, id: 3},
         {name: 'Robert De Niro',salary: 300, increase: false, id: 4}
     ];
