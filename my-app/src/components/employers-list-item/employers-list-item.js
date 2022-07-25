@@ -7,7 +7,7 @@ class EmployersListItem extends Component {
         super(props);
         this.state = {
             increase: this.props.increase,
-            premium: false
+            rise: false
         }
     }
     // classNames = () => {
@@ -21,25 +21,25 @@ class EmployersListItem extends Component {
             increase: !increase
         }))
     }
-    premium = () => {
-        this.setState(({premium}) => ({
-            premium: !premium
+    onRise = () => {
+        this.setState(({rise}) => ({
+            rise: !rise
         }))
     }
     render() {
-        const {name, salary} = this.props; 
-        const {increase, premium} = this.state;
+        const {name, salary, onDelete} = this.props; 
+        const {increase, rise} = this.state;
         let classNames = `list-group-item d-flex justify-content-between`;
         if (increase) {
             classNames += ' increase';
         }
-        if (premium) {
+        if (rise) {
             classNames += ' like';
         }
         return (    
             // <li className={`list-group-item d-flex justify-content-between` + (increase ? ' increase' : '')}>
             <li className={classNames}>
-                <span onClick={this.premium} className="list-group-item-label">{name}</span>
+                <span onClick={this.onRise} className="list-group-item-label">{name}</span>
                 <input type="text" className="list-group-item-input" defaultValue={salary + '$'}/>
                 <div className='d-flex justify-content-center align-items-center'>
                     <button onClick={this.onIncrease} type="button"
@@ -47,7 +47,7 @@ class EmployersListItem extends Component {
                         <i className="fas fa-cookie"></i>
                     </button>
     
-                    <button type="button"
+                    <button onClick={onDelete} type="button"
                             className="btn-trash btn-sm ">
                         <i className="fas fa-trash"></i>
                     </button>
