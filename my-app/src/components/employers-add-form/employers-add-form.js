@@ -10,21 +10,32 @@ class EmployersAddForm extends Component {
         }
     }
     onValueChange = (e) => {
+
         this.setState(() => ({
             [e.target.name]: e.target.value
         }))
     }
 
-    addEmployee = () => {
-
+    onSubmit = (e) => {
+        e.preventDefault();
+        // Можно еще и сообщения добавлять, подсветку, атрибуты minlength и тд.
+        if (!this.state.salary || this.state.name.length < 3) {
+            return
+        }
+        this.props.onAdd(this.state.name, this.state.salary);
+        this.setState({
+            name: '',
+            salary: ''
+        })
     }
     
     render() {
-        const {name, salary, onAddEmployee} = this.state;
+        const {name, salary} = this.state;
         return (
             <div className="app-add-form">
                 <h3>Добавьте нового сотрудника</h3>
                 <form
+                    onSubmit = {this.onSubmit}
                     className="add-form d-flex">
                     <input onChange={this.onValueChange} type="text"
                         className="form-control new-post-label"
@@ -33,7 +44,7 @@ class EmployersAddForm extends Component {
                         className="form-control new-post-label"
                         placeholder="З/П в $?" name='salary' value={salary} />
     
-                    <button onClick={() => onAddEmployee(name, salary)} type="submit"
+                    <button type="submit"
                             className="btn btn-outline-light">Добавить</button>
                 </form>
             </div>
