@@ -10,9 +10,6 @@ class AppInfo extends Component {
         }
     }
 
-    abc = () => {
-
-    }
 
     render() {
         const {employees, increased} = this.props;
